@@ -1,25 +1,38 @@
-import React from 'react'
-import './my.css'
+import React, { useState } from 'react'
+import './App.css'
 
-const Select = ({onChange, release_town, towns}) => (
-  <div className="header-container">
-      <select
-      id="release_town"
-      className="select"
-      name="release_town"
-      value={release_town}
-      onChange={onChange}
-    >
-      <option key={0} value="" disabled>
-        Выберите город
-      </option>
-      {towns.map((town, index) => (
-        <option key={index} value={town} className="option-size">
-          {town}
-        </option>
-      ))}
-    </select>
+function Select ({classes, setNewState, values}) {
+  const SelectToggle = () => {
+    const currentState = classes;
+    setNewState(!currentState)
+  }
+  const [filters, setFilters] = useState('Выберите значение');
+
+  const onClick = event => {
+    const value = event.target.innerHTML;
+    setFilters(value);
+    SelectToggle();
+  };
+  return (
+  <>
+  <div className="select__header" onClick={SelectToggle}> 
+    <span className="select__current">{filters}</span>        
+    <div className="select__icon">&times;</div>
   </div>
-);
+  <div className="select__body">
+      {values.map((value, index) => (
+        <div 
+        name="release_town" 
+        id="release_town"
+        key={index} value={value}
+        onClick={onClick}
+        className="select__item">
+          {value}
+        </div>
+      ))}
+  </div>
+  </>
+  );
+};
 
 export default Select;

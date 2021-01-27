@@ -1,33 +1,21 @@
-import React, { useState } from 'react'
+import './App.css';
 import Select from './Select'
+import React, { useState } from 'react'
 
-const towns = ["Москва", "Тамбов", "Новосибирск", "Екатеринбург", "Казань",
-"Нижний Новгород", "Челябинск", "Самара", "Омск", "Ростов-на-Дону", "Уфа",
-"Красноярск", "Воронеж", "Пермь", "Волгоград", "Краснодар", "Саратов",
-"Тюмень", "Тольятти", "Ижевск", "Барнаул", "Ульяновск", "Иркутск",
-"Хабаровск", "Ярославль", "Владивосток", "Махачкала", "Томск", "Оренбург",
-"Кемерово", "Рязань", "Набережные Челны", "Астрахань", "Пенза"];
+const values = ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"];
 
 function App() {
-  const [filters, setFilters] = useState({release_town: ""});
-
-  const onChange = event => {
-    const {name, value} = event.target;
-    setFilters({
-      [name]: value
-    });
-  };
+  const [classes, setNewState] = useState('false');
 
   return (
-  <div className="App">
-    <Select
-      release_town={filters.release_town}
-      onChange={onChange}
-      towns={towns}
-    />
-    <p>Город: {filters.release_town}</p>
-  </div>
-  )
+    <div className={classes ? 'select' : 'select is-active'}>
+      <Select 
+      classes={classes}
+      setNewState={setNewState}
+      values={values}
+      />
+    </div>
+  );
 }
 
 export default App;
