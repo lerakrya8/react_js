@@ -1,18 +1,25 @@
-import './App.css';
-import Select from './Select'
-import React, { useState } from 'react'
+import React, { useState, useCallback } from "react";
+import Button from "./Button";
 
-const values = ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"];
 
 function App() {
-  const [classes, setNewState] = useState('false');
+  const [count, setCount] = useState(1);
+  const [isActive, setActive] = useState(false);
+
+  const handleCount = useCallback(() => setCount(count * 2), [count]);
+  const handleShow = useCallback(() => setActive(!isActive), [isActive]);
 
   return (
-    <div className={classes ? 'select' : 'select is-active'}>
-      <Select 
-      classes={classes}
-      setNewState={setNewState}
-      values={values}
+    <div className="App">
+      {isActive && (
+        <div>
+          <h1>{count}</h1>
+          <Button onClick={handleCount} name="Increment" />
+        </div>
+      )}
+      <Button
+        onClick={handleShow}
+        name={isActive ? "Hide Counter" : "Show Counter"}
       />
     </div>
   );
