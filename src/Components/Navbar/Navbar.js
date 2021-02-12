@@ -1,12 +1,14 @@
 import React, { useState } from "react"
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import DropdownSpares from '../Dropdown/DropdownSpares'
-import DropdownTransport from '../Dropdown/DropdownTransport'
-import DropdownCars from '../Dropdown/DropdowmCars'
-import DropdownCommercial from '../Dropdown/DropdownCommercial'
-import DropdownMoto from '../Dropdown/DropdownMoto'
+
+import Dropdown from '../Dropdown/Dropdown'
 import NavMenu from './NavMenu'
+import { Cars } from '../Constants/Cars'
+import { Commercial } from '../Constants/Commercial'
+import { Moto } from '../Constants/Moto'
+import { Spares } from '../Constants/Spares'
+import { Transport } from '../Constants/Transport'
 
 function Navbar() {
     const [click, setClick] = useState(false);
@@ -74,12 +76,13 @@ function Navbar() {
                 <NavMenu click={click} closeMobileMenu={closeModileMenu} />
                 <ul className='nav-menu-wide'>
                     <li className='nav-item'
-                    onMouseEnter={onMouseEnterCars}
-                    onMouseLeave={onMouseLeaveCars}>
-                    <Link to='/' className='nav-links' onClick={closeModileMenu}>
-                    Легковые
-                    </Link>
-                    {dropdownCars && <DropdownCars />}
+                        onMouseEnter={onMouseEnterCars}
+                        onMouseLeave={onMouseLeaveCars}
+                    >
+                        <Link to='/' className='nav-links' onClick={closeModileMenu}>
+                        Легковые
+                        </Link>
+                        {dropdownCars && <Dropdown dropdownMenu={Cars}/>}
                     </li>
                     <li
                         className='nav-item'
@@ -89,7 +92,7 @@ function Navbar() {
                         <Link to='/' className='nav-links' onClick={closeModileMenu}>
                         Коммерческие 
                         </Link>
-                        {dropdownCommersial && <DropdownCommercial />}
+                        {dropdownCommersial && <Dropdown dropdownMenu={Commercial} />}
                     </li>
                     <li className='nav-item'
                     onMouseEnter={onMouseEnterMoto}
@@ -98,7 +101,7 @@ function Navbar() {
                         <Link to='/' className='nav-links' onClick={closeModileMenu}>
                         Мото
                         </Link>
-                        {dropdownMoto && <DropdownMoto />}
+                        {dropdownMoto && <Dropdown dropdownMenu={Moto} />}
                     </li>
                     <li className='nav-item'
                     onMouseEnter={onMouseEnterSpares}
@@ -107,7 +110,7 @@ function Navbar() {
                         <Link to='/' className='nav-links' onClick={closeModileMenu}>
                         Запчасти
                         </Link>
-                        {dropdownSpares && <DropdownSpares />}
+                        {dropdownSpares && <Dropdown dropdownMenu={Spares} />}
                     </li>
                     <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick={closeModileMenu}>
@@ -150,18 +153,18 @@ function Navbar() {
                         onMouseLeave={onMouseLeaveTransport}
                     >
                         <Link to='/' className='nav-menu-links'>
-                            Транспорт <i className='fas fa-caret-down' />
+                            Транспорт
                         </Link>
-                        {dropdownTransport && <DropdownTransport />}
+                        {dropdownTransport && <Dropdown dropdownMenu={Transport} />}
                     </li>
                     <li className='nav-item'
                         onMouseEnter={onMouseEnterSpares}
                         onMouseLeave={onMouseLeaveSpares}
                     >
                         <Link to='/' className='nav-menu-links'>
-                            Запчасти <i className='fas fa-caret-down' />
+                            Запчасти 
                         </Link>
-                        {dropdownSpares && <DropdownSpares />}
+                        {dropdownSpares && <Dropdown dropdownMenu={Spares} />}
                     </li>
                     <li className='nav-item'>
                         <Link to='/' className='nav-menu-links'>

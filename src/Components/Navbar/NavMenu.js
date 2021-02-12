@@ -1,5 +1,5 @@
 import React from "react"
-import { NavMenuItems } from './NavMenuItems'
+import { NavMenuItems } from '../Constants/NavMenuItems'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 

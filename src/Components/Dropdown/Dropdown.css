@@ -1,36 +1,9 @@
 .dropdown-menu {
-    width: 200px;
+    width: 250px;
     position: absolute;
     top: 60px;
     list-style: none;
     text-align: start;
-    box-shadow: 5px 3px 30px 3px grey;
-}
-
-.dropdown-menu-cars {
-    width: 200px;
-    position: absolute;
-    list-style: none;
-    text-align: start;
-    top: 60px;
-    box-shadow: 5px 3px 30px 3px grey;
-}
-
-.dropdown-menu-commercial {
-    width: 300px;
-    position: absolute;
-    list-style: none;
-    text-align: start;
-    top: 60px;
-    box-shadow: 5px 3px 30px 3px grey;
-}
-
-.dropdown-menu-moto {
-    width: 200px;
-    position: absolute;
-    list-style: none;
-    text-align: start;
-    top: 60px;
     box-shadow: 5px 3px 30px 3px grey;
 }
 
@@ -61,38 +34,11 @@
 
 @media screen and (max-width: 960px) {
     .dropdown-menu {
-        width: 200px;
+        width: 150px;
         position: absolute;
         top: 160px;
         list-style: none;
         text-align: start;
-    }
-
-    .dropdown-menu-cars {
-        width: 200px;
-        position: absolute;
-        left: 200px;
-        list-style: none;
-        text-align: start;
-        top: 0px;
-    }
-
-    .dropdown-menu-commercial {
-        width: 300px;
-        position: absolute;
-        left: 200px;
-        list-style: none;
-        text-align: start;
-        top: 54px;
-    }
-
-    .dropdown-menu-moto {
-        width: 200px;
-        position: absolute;
-        left: 200px;
-        list-style: none;
-        text-align: start;
-        top: 108px;
     }
 
     .dropdown-menu li {
