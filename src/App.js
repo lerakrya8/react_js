@@ -1,14 +1,13 @@
-import React from 'react'
-import './App.css';
-import Navbar from './Components/Navbar/Navbar'
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import Characters from './Characters'
+import Episodes from './Episodes'
+import './App.css'
 
-function App() {
-  return (
-    <Router>
-      <Navbar />
-    </Router>
+const App = () => (
+    <>
+    <Characters />
+    <Episodes />
+    </>
   );
-}
 
 export default App;
