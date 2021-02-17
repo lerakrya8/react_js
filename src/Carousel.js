@@ -1,48 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Children } from 'react'
 import './App.css'
 import Buttons from './Buttons';
 
-function Characters({api, nameCarousel}) {
-  const [data, setData] = useState([]);
- 
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = async() => {
-    const response = await fetch(api);
-    const result = await response.json();
-    setData(result);
+function Carousel({items, scroll, setScroll, children}) {
+  const prevItem = () => {
+    let scrollValue = 300;
+    if (window.innerWidth < 450) {
+        scrollValue = 200;
+    }
+    return scroll === 0 ? setScroll(0) : setScroll(scroll + scrollValue);
   };
 
-  const [x, setX] = useState(0);
-  const prevItem = () => x === 0 ? setX(0) : setX(x + 100);
-  const nextItem = () => x === -100 * (data.length - 4) ? setX(x) : setX(x - 100);
+  const nextItem = () =>  {
+    let scrollValue = 300;
+    if (window.innerWidth < 450) {
+        scrollValue = 200;
+    }
+    return scroll === -1 * (scrollValue) * (Math.ceil(items.length / (scrollValue/100)) - 1) ? setScroll(scroll) : setScroll(scroll - scrollValue);
+  };
 
   return (
     <>
     <ul className='carousel'>
-      {data.map((item, index) => (
-            nameCarousel === 'episodes' ? 
-            <li className='carousel-item' key={index} style={{transform: `translateX(${x}%)`}}>
-                <p className='title'>{item.title}</p>
-                <p>Season: {item.season} </p>
-                <p>Episode: {item.episode}</p>
-                <p>Data: {item.air_date}</p>
-                <p className='characters'>Characters: {item.characters.join(', ')}</p> 
-            </li>
-                :
-            <li className='carousel-item' key={index} style={{transform: `translateX(${x}%)`}}>
-                <img className='image' src={item.img} />
-                <p className='nickname'>{item.nickname}</p>
-                <p className='birth'>Birthday: {item.birthday} </p>
-                <p className='name'>{item.name}</p>
-            </li>
-        ))}
+      {children}
       <Buttons prevItem={prevItem} nextItem={nextItem}/>
     </ul>
     </>
   );
 }
 
-export default Characters;
+export default Carousel;
