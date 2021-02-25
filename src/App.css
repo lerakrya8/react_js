@@ -13,6 +13,7 @@
   align-items: center;
   overflow: hidden;
   list-style: none;
+  touch-action: cross-slide-x;
 }
 
 .carousel-item {
@@ -21,6 +22,7 @@
   min-width: 30%;
   transition: .5s;
   min-height: 300px;
+  transition: transform 1s;
 }
 
 .image {
@@ -39,14 +41,6 @@
   cursor: pointer;
 }
 
-.prev-item:hover {
-  color: maroon;
-}
-
-.next-item:hover {
-  color: maroon;
-}
-
 .next-item {
   position: absolute;
   top: 40%;
@@ -56,12 +50,16 @@
   padding-left: 5rem;
 }
 
+.close-item {
+  display: none;
+}
+
 i {
   font-size: 40px;
 }
 
 .nickname {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .birth {
@@ -93,38 +91,31 @@ p {
   text-align: left;
 }
 
-@media screen and (max-width: 960px) {
-  .carousel-item {
-    min-width: 25%;
-  }
+.mobile-image {
+  height: 15vh;
+  width: 10vh;
+}
 
-  .image {
-    height: 15vh;
-    width: 10vh;
-  }
+.mobile-nickname {
+  font-size: 0.9rem;
+}
 
-  .nickname {
-    font-size: 0.9rem;
-  }
-  
-  .birth {
-    color: grey;
-    font-size: 0.6rem;
-  }
-  
-  .name {
-    font-size: 0.9rem;
-  }
+.mobile-birth {
+  font-size: 0.6rem;
+}
 
-  .title {
-    font-size: 1rem;
-  }
-  
-  .characters {
-    font-size: 0.5rem;
-  }
+.title-mobile {
+  font-size: 1rem;
+}
 
-  p {
-    font-size: 0.6rem;
-  }
+.characters-mobile {
+  font-size: 0.5rem;
+}
+
+.carousel-mobile {
+  min-width: 25%;
+}
+
+.mobile {
+  font-size: 0.6rem;
 }

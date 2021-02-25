@@ -1,0 +1,1 @@
+export const ApiCharacters: string = 'https://www.breakingbadapi.com/api/characters'

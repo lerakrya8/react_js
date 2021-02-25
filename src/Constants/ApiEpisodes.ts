@@ -1,0 +1,1 @@
+export const ApiEpisodes: string = 'https://www.breakingbadapi.com/api/episodes'
